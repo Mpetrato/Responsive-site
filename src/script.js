@@ -18,18 +18,16 @@ links.forEach((link)=>{
 
 // Scroll Nav Box-Shadow
 
-const header = document.querySelector('#header');
-const navHeight = header.offsetHeight;
+const changeHeaderWhenScroll = ()=> {
+    const header = document.querySelector('#header');
+    const navHeight = header.offsetHeight;
 
-
-window.addEventListener('scroll', ()=>{
     if(window.scrollY >= navHeight){
         header.classList.add('scroll')
     }else {
         header.classList.remove('scroll')
     }
-})
-
+}
 
 
 // Testimonials carousel 
@@ -58,5 +56,29 @@ scrollReveal.reveal(
     #about .image, #about .text,
     #services header, #services .card,
     #testimonials header, #testimonials .testimonials,
-    #contact .text, #contact .links
-    `, { interval: 100})
+    #contact .text, #contact .links,
+    footer .brand, footer .social
+    `,
+    { interval: 100})
+
+
+// Back-To-Top
+
+
+const backToTop = ()=> {
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    if(window.scrollY >= 560){
+        backToTopButton.classList.add('show')
+    }else {
+        backToTopButton.classList.remove('show')
+    }
+}
+
+
+// When Scroll
+
+window.addEventListener('scroll', ()=>{
+    changeHeaderWhenScroll()
+    backToTop()
+})
